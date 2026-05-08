@@ -1,0 +1,72 @@
+<!-- 
+  PORTFOLIO WEBSITE - SETUP INSTRUCTIONS
+  Complete step-by-step guide for running locally
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Setup Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 900px; margin: 30px auto; padding: 20px; }
+        h1 { color: #667eea; }
+        .step { background: #f0f0f0; padding: 15px; margin: 20px 0; border-left: 4px solid #667eea; }
+        code { background: #333; color: #fff; padding: 10px; display: block; margin: 10px 0; }
+        .success { color: #27ae60; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>📚 Portfolio Setup Guide</h1>
+    
+    <div class="step">
+        <h2>Step 1: Verify XAMPP Installation</h2>
+        <p>Ensure XAMPP is installed with Apache and MySQL running.</p>
+        <code>C:\xampp\apache\bin\httpd.exe -v  # Check Apache</code>
+        <p class="success">✓ Apache running on Port 80</p>
+        <p class="success">✓ MySQL running on Port 3306</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 2: Import Database Schema</h2>
+        <p>Create the portfolio database using phpMyAdmin or MySQL CLI.</p>
+        <code>mysql -u root -p < database/portfolio_db.sql</code>
+        <p class="success">✓ Database "portfolio_db" created</p>
+        <p class="success">✓ Tables: contact_messages, projects, skills</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 3: Start the Website</h2>
+        <p>Open your browser and navigate to:</p>
+        <code>http://localhost/portfolio/</code>
+        <p class="success">✓ Website loads successfully</p>
+        <p class="success">✓ All CSS and JavaScript files load</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 4: Test Contact Form</h2>
+        <p>Fill out the contact form to test PHP and MySQL integration.</p>
+        <code>Form validation → PHP processing → Database storage</code>
+        <p class="success">✓ Message saved in contact_messages table</p>
+        <p class="success">✓ Success confirmation displayed</p>
+    </div>
+
+    <div class="step">
+        <h2>Step 5: View Messages in phpMyAdmin</h2>
+        <code>http://localhost/phpmyadmin → portfolio_db → contact_messages</code>
+        <p class="success">✓ Messages visible in database</p>
+    </div>
+
+    <h2>🎯 Curriculum Coverage</h2>
+    <ul>
+        <li>✅ HTML5: Semantic markup, forms, accessibility</li>
+        <li>✅ CSS3: Flexbox, Grid, animations, responsiveness</li>
+        <li>✅ JavaScript: DOM, events, validation, fetch API</li>
+        <li>✅ PHP: Forms, sanitization, database connection</li>
+        <li>✅ MySQL: CRUD, schema design, relationships</li>
+        <li>✅ Git: 10+ meaningful commits</li>
+    </ul>
+
+</body>
+</html>
