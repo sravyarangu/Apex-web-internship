@@ -1,16 +1,8 @@
--- ========================================
--- PORTFOLIO DATABASE SCHEMA
--- MySQL Database Setup for Contact Messages
--- ========================================
 
 -- Create Database
 CREATE DATABASE IF NOT EXISTS portfolio_db;
 USE portfolio_db;
 
--- ========================================
--- CONTACT MESSAGES TABLE
--- Stores all contact form submissions
--- ========================================
 
 CREATE TABLE IF NOT EXISTS contact_messages (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -25,14 +17,9 @@ CREATE TABLE IF NOT EXISTS contact_messages (
     replied_at TIMESTAMP NULL
 );
 
--- Create indexes for better query performance
 CREATE INDEX idx_email ON contact_messages(email);
 CREATE INDEX idx_created_at ON contact_messages(created_at);
 
--- ========================================
--- PROJECTS TABLE
--- Dynamically display projects on portfolio
--- ========================================
 
 CREATE TABLE IF NOT EXISTS projects (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -46,10 +33,6 @@ CREATE TABLE IF NOT EXISTS projects (
     is_active BOOLEAN DEFAULT TRUE
 );
 
--- ========================================
--- SKILLS TABLE
--- Manage and display skillsets
--- ========================================
 
 CREATE TABLE IF NOT EXISTS skills (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -60,10 +43,6 @@ CREATE TABLE IF NOT EXISTS skills (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- ========================================
--- SAMPLE DATA INSERTION
--- Insert sample projects
--- ========================================
 
 INSERT INTO projects (title, description, technologies, project_url, image_url, is_active) VALUES
 ('Personal Portfolio Website', 
@@ -87,7 +66,6 @@ INSERT INTO projects (title, description, technologies, project_url, image_url, 
  'assets/games-project.jpg',
  TRUE);
 
--- Insert sample skills
 INSERT INTO skills (category, skill_name, proficiency_level, display_order) VALUES
 ('Frontend', 'HTML5 Semantic Tags', 'Advanced', 1),
 ('Frontend', 'CSS3 Flexbox & Grid', 'Advanced', 2),
@@ -113,34 +91,12 @@ INSERT INTO skills (category, skill_name, proficiency_level, display_order) VALU
 ('Tools & Workflow', 'VS Code Editor', 'Advanced', 19),
 ('Tools & Workflow', 'Responsive Testing', 'Intermediate', 20);
 
--- ========================================
--- QUERIES FOR PORTFOLIO FUNCTIONALITY
--- ========================================
 
--- Query: Get all unread messages
--- SELECT * FROM contact_messages WHERE is_read = FALSE ORDER BY created_at DESC;
 
--- Query: Get messages from last 7 days
--- SELECT * FROM contact_messages WHERE created_at >= DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY created_at DESC;
 
--- Query: Update message as read
--- UPDATE contact_messages SET is_read = TRUE WHERE id = ?;
 
--- Query: Get all active projects
--- SELECT * FROM projects WHERE is_active = TRUE ORDER BY created_at DESC;
 
--- Query: Get skills grouped by category
--- SELECT category, GROUP_CONCAT(skill_name) as skills FROM skills GROUP BY category;
 
--- ========================================
--- SAMPLE SELECT QUERIES (for testing)
--- ========================================
 
--- View all contact messages
--- SELECT id, name, email, subject, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') as sent_time FROM contact_messages;
 
--- View all projects
--- SELECT title, technologies, project_url FROM projects WHERE is_active = TRUE;
 
--- View all skills by category
--- SELECT category, skill_name, proficiency_level FROM skills ORDER BY category, display_order;

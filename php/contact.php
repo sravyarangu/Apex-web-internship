@@ -1,9 +1,4 @@
 <?php
-/**
- * Contact Form Handler - PHP Backend
- * Handles form validation, sanitization, and database storage
- * Technologies: PHP 7.x+, MySQL, mysqli_connect()
- */
 
 // ========================================
 // DATABASE CONFIGURATION
@@ -14,16 +9,12 @@ $dbuser = 'root'; // XAMPP default user
 $dbpass = ''; // XAMPP default (empty password)
 $dbname = 'portfolio_db'; // Database name
 
-// ========================================
-// RESPONSE HEADERS
-// ========================================
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
 // ========================================
 // CHECK REQUEST METHOD
-// ========================================
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode([
@@ -33,9 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// ========================================
-// RETRIEVE AND VALIDATE FORM DATA
-// ========================================
 
 // Get form inputs
 $name = isset($_POST['name']) ? trim($_POST['name']) : '';
@@ -43,7 +31,6 @@ $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 $subject = isset($_POST['subject']) ? trim($_POST['subject']) : '';
 $message = isset($_POST['message']) ? trim($_POST['message']) : '';
 
-// Client-side validation (double-check)
 if (empty($name) || strlen($name) < 2) {
     echo json_encode([
         'success' => false,
@@ -76,18 +63,12 @@ if (empty($message) || strlen($message) < 10) {
     exit;
 }
 
-// ========================================
-// SANITIZE INPUT DATA
-// ========================================
 
 $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
 $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 $subject = htmlspecialchars($subject, ENT_QUOTES, 'UTF-8');
 $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
 
-// ========================================
-// CONNECT TO DATABASE
-// ========================================
 
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
@@ -101,12 +82,8 @@ if (!$conn) {
     exit;
 }
 
-// Set charset
 mysqli_set_charset($conn, 'utf8mb4');
 
-// ========================================
-// INSERT MESSAGE INTO DATABASE
-// ========================================
 
 $created_at = date('Y-m-d H:i:s');
 
@@ -114,7 +91,6 @@ $created_at = date('Y-m-d H:i:s');
 $sql = "INSERT INTO contact_messages (name, email, subject, message, created_at) 
         VALUES (?, ?, ?, ?, ?)";
 
-// Use prepared statement to prevent SQL injection
 $stmt = $conn->prepare($sql);
 
 if (!$stmt) {
@@ -157,9 +133,6 @@ if ($stmt->execute()) {
     error_log('Execute Error: ' . $stmt->error);
 }
 
-// ========================================
-// CLOSE CONNECTIONS
-// ========================================
 
 $stmt->close();
 $conn->close();

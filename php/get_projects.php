@@ -1,14 +1,8 @@
 <?php
-/**
- * Get Projects API
- * Retrieve all active projects from database
- * Returns JSON array of projects
- */
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: *');
 
-// Test database connection without requiring config.php
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
@@ -17,7 +11,6 @@ $dbname = 'portfolio_db';
 $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 
 if (!$conn) {
-    // Database not set up yet - return demo data
     echo json_encode([
         'status' => 'demo',
         'message' => 'Database not configured. Returning demo data.',
@@ -53,11 +46,9 @@ if (!$conn) {
 
 mysqli_set_charset($conn, 'utf8mb4');
 
-// Check if projects table exists
 $tableCheck = $conn->query("SHOW TABLES LIKE 'projects'");
 
 if (!$tableCheck || $tableCheck->num_rows === 0) {
-    // Table doesn't exist - return demo data
     echo json_encode([
         'status' => 'demo',
         'message' => 'Projects table not found. Returning demo data.',
@@ -76,7 +67,6 @@ if (!$tableCheck || $tableCheck->num_rows === 0) {
     exit;
 }
 
-// Query active projects
 $sql = "SELECT id, title, description, technologies, project_url, github_url, image_url, created_at 
         FROM projects 
         WHERE is_active = TRUE 
