@@ -1,0 +1,112 @@
+# ========================================
+# Git Ignore File - Portfolio Website
+# Exclude files from version control
+# ========================================
+
+# Environment & Database
+.env
+*.ini
+config.local.php
+
+# XAMPP & Server Files
+*/config/database.php
+phpmyadmin/
+*.log
+
+# Dependencies & Vendors
+vendor/
+node_modules/
+composer.lock
+
+# IDE & Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Backup Files
+*.bak
+*.backup
+*.tmp
+*.temp
+*~
+
+# Build & Dist
+/dist/
+/build/
+*.min.js
+*.min.css
+
+# Test & Coverage
+/tests/
+/coverage/
+*.spec.js
+
+# Database Exports
+*.sql.backup
+*.sql.zip
+
+# Sensitive Files
+/config/secrets/
+/api/credentials.json
+.env.local
+.env.*.local
+
+# Cache
+/cache/
+*.cache
+.cache/
+
+# User-specific files (XAMPP installations)
+xampp/
+httpd-xampp.conf
+
+# Node/NPM (if using npm for build tools)
+package-lock.json
+yarn.lock
+
+# VS Code Workspace settings
+.vscode/settings.json
+.vscode/extensions.json
+
+# IDE
+.vscode/
+.idea/
+*.iml
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Compiled files (Java, C#, etc.)
+*.class
+*.dll
+*.exe
+*.o
+
+# Generated files
+/generated/
+/temp/
+/tmp/
