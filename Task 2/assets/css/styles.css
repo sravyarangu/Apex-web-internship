@@ -1,0 +1,47 @@
+:root{
+  --brand:#0d6efd;
+  --brand-dark:#0b5ed7;
+  --muted:#6c757d;
+}
+body{font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;}
+.bg-primary{background: linear-gradient(180deg, var(--brand), var(--brand-dark));}
+.card{border-radius:12px}
+.input-group .btn{min-width:70px}
+#usernameFeedback{color:var(--muted)}
+
+@media (max-width: 767px){
+  .col-lg-5{display:none}
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+.anim-hidden{opacity:0; transform-origin:0 0}
+.anim-fade-up.anim-in{animation: fadeUp .5s ease forwards}
+.anim-slide-left.anim-in{animation: slideInLeft .45s ease forwards}
+.btn-animate{transition: transform .18s ease, box-shadow .18s ease}
+.btn-animate:hover{transform: translateY(-3px); box-shadow: 0 8px 20px rgba(13,110,253,0.12)}
+
+/* Staggered children */
+.stagger > *{opacity:0; transform:translateY(8px)}
+.stagger.stagger-in > *{opacity:1; transform:translateY(0); transition: all .36s ease}
+.stagger.stagger-in > *:nth-child(1){transition-delay:.05s}
+.stagger.stagger-in > *:nth-child(2){transition-delay:.10s}
+.stagger.stagger-in > *:nth-child(3){transition-delay:.14s}
+.stagger.stagger-in > *:nth-child(4){transition-delay:.18s}
+
+/* subtle focus ring for inputs */
+input:focus, textarea:focus { box-shadow: 0 0 0 .15rem rgba(13,110,253,0.12); }
+

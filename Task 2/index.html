@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login & Registration UI — Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
+  </head>
+  <body class="bg-light">
+    <div class="container py-5">
+      <div class="row justify-content-center">
+        <div class="col-md-9">
+          <div class="card shadow-sm overflow-hidden">
+            <div class="row g-0">
+              <div class="col-lg-5 d-none d-lg-block bg-primary text-white p-4">
+                <h3 class="fw-bold">Welcome</h3>
+                <p class="mb-4">Build responsive Login & Registration UIs with Bootstrap 5, client-side validation and AJAX checks.</p>
+              </div>
+              <div class="col-lg-7 p-4">
+                <ul class="nav nav-tabs mb-3" id="authTabs" role="tablist">
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab">Login</button>
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab">Register</button>
+                  </li>
+                </ul>
+
+                <div class="tab-content" id="authTabsContent">
+                  <div class="tab-pane fade show active" id="login" role="tabpanel">
+                    <form id="loginForm" novalidate>
+                      <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="loginEmail" required>
+                        <div class="invalid-feedback">Please enter a valid email.</div>
+                      </div>
+                      <div class="mb-3 position-relative">
+                        <label class="form-label">Password</label>
+                        <div class="input-group">
+                          <input type="password" class="form-control" id="loginPassword" required>
+                          <button class="btn btn-outline-secondary" type="button" id="toggleLoginPwd">Show</button>
+                        </div>
+                        <div class="invalid-feedback">Password is required.</div>
+                      </div>
+                      <div class="d-grid">
+                        <button class="btn btn-primary" type="submit">Sign in</button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="tab-pane fade" id="register" role="tabpanel">
+                    <form id="registerForm" novalidate>
+                      <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" id="regUsername" required>
+                        <div class="form-text text-muted">We'll check availability (dummy check).</div>
+                        <div class="invalid-feedback">Choose a username.</div>
+                        <div id="usernameFeedback" class="small mt-1"></div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" id="regEmail" required>
+                        <div class="invalid-feedback">Enter a valid email.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" id="regPassword" required>
+                        <div class="invalid-feedback">Password is required.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="regPassword2" required>
+                        <div class="invalid-feedback" id="pwMatchFeedback">Passwords must match.</div>
+                      </div>
+                      <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="toggleRegPwd">
+                        <label class="form-check-label" for="toggleRegPwd">Show passwords</label>
+                      </div>
+                      <div class="d-grid">
+                        <button class="btn btn-success" type="submit">Create account</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+                <p class="mt-3 small text-muted">Demo: client-side validation, password-match, show/hide, and an AJAX username availability check (dummy).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
